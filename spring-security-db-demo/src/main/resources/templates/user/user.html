@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户中心</title>
+</head>
+<body>
+
+<div th:insert="~{header}"></div>
+<p th:text="欢迎您 + ${username}"></p>
+<form th:action="@{/logout}" method="post">
+    <button>退出登录</button>
+</form>
+</body>
+</html>

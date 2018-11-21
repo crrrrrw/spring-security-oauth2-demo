@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:mysql://10.0.0.20:3306/wealth?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: analyse
+    password: GemanticYes!
+
+# mybatis
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+    use-generated-keys: true

@@ -1,0 +1,9 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+    <a th:href="@{/}">首页</a>
+    <a th:href="@{/user}" th:if="${#httpServletRequest.remoteUser}">个人中心</a>
+    <a th:href="@{/login}" th:unless="${#httpServletRequest.remoteUser}">登录</a>
+</div>
+</body>
+</html>
