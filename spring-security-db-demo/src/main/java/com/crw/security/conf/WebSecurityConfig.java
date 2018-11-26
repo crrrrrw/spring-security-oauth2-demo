@@ -9,7 +9,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -45,7 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .groupAuthoritiesByUsername("...")//配置用户所属组Authorities查询语句
                 .passwordEncoder(passwordEncoder())//启用密码加密功能
                 .dataSource(dataSource());*/
-        auth.userDetailsService(jdbcUserDetailsService);
+        auth.userDetailsService(jdbcUserDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -59,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * 解决 There is no PasswordEncoder mapped for the id “null” 的错误
      */
     @Bean
-    public static NoOpPasswordEncoder passwordEncoder() {
-        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

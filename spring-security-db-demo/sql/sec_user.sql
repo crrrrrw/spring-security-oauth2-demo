@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `sec_user`;
 CREATE TABLE `sec_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(20) NOT NULL DEFAULT '' COMMENT '账号',
-  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `password` varchar(64) NOT NULL DEFAULT '' COMMENT '密码',
   `nick_name` varchar(20) NOT NULL DEFAULT '' COMMENT '昵称',
   `roles` varchar(64) NOT NULL DEFAULT '' COMMENT '身份',
   `create_at` bigint(20) NOT NULL,
